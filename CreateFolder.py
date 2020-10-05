@@ -41,12 +41,11 @@ def get_src_folders(working, assignments):
     for i in range(1, assignments):
         current = working + '.' + str(i)
         src_folders.append(current)
-        print(current)
+    return src_folders
 
 
 def copy_files(folders, working):
-    for i in folders:
-        print(i)
+    get_src_folders(working, len(folders))
 
 
 def populate_folders(created):
