@@ -18,6 +18,7 @@ def main():
 
 
 def get_work_dir():
+    # Get the current subfolder you will be working in
     loc = input("Folder to create subfolders in: ")
     working = path + '/' + loc
     if not os.path.exists(working):
@@ -26,6 +27,8 @@ def get_work_dir():
 
 
 def create_folders(working):
+    # Create specified number of folders in previously defined
+    # subfolder if it does not already exist.
     created = []
     working += '/Practice ' + working[len(working) - 1]
     for i in range(1, int(input("How many assignments? ")) + 1):
@@ -37,6 +40,8 @@ def create_folders(working):
 
 
 def get_src_folders(working, assignments):
+    # Get the example folders inside working directory to get
+    # copy contents for new folders
     src_folders = []
     working += '/' + working[len(working) - 1]
     for i in range(1, assignments):
@@ -46,12 +51,14 @@ def get_src_folders(working, assignments):
 
 
 def copy_files(folders, working):
+    # Copy contents from one directory (left) to a new location (right)
     sources = get_src_folders(working, len(folders))
     for i in range(len(sources)):
         copy_tree(sources[i], folders[i])
 
 
 def populate_folders(created):
+    # If a HTML file isn't already in a folder, provide a default one
     for i in created:
         if not os.path.exists(i + "index.html"):
             f = open(i + "index.html", "w")
@@ -60,6 +67,7 @@ def populate_folders(created):
 
 # noinspection PyPep8Naming
 def write_HTML(f):
+    # Default HTML
     f.write("<!DOCTYPE html>\n")
     f.write('<html lang="en">')
     f.write("\n")
@@ -76,6 +84,7 @@ def write_HTML(f):
 
 
 def zip_folders(created):
+    # Zip all created folders
     for i in range(0, len(created)):
         created[i] = created[i][:-1]
         make_archive(created[i], 'zip', root_dir=created[i])
