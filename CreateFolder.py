@@ -7,9 +7,10 @@ path = config.file_path
 
 def main():
     folders = create_folders(get_work_dir())
-    populate_folders(folders)
     if input("Copy files from examples? [y/n] ") == 'y':
-        print()
+        copy_files(folders)
+    else:
+        populate_folders(folders)
     if input("Zip files? [y/n]: ") == 'y':
         zip_folders(folders)
 
@@ -33,6 +34,11 @@ def create_folders(working):
     return created
 
 
+def copy_files(folders):
+    for i in folders:
+        print(i)
+
+
 def populate_folders(created):
     for i in created:
         if not os.path.exists(i + "index.html"):
@@ -40,6 +46,7 @@ def populate_folders(created):
             write_HTML(f)
 
 
+# noinspection PyPep8Naming
 def write_HTML(f):
     f.write("<!DOCTYPE html>\n")
     f.write('<html lang="en">')
@@ -62,5 +69,5 @@ def zip_folders(created):
         make_archive(created[i], 'zip', root_dir=created[i])
 
 
-
-main()
+if __name__ == '__main__':
+    main()
