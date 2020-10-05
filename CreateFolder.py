@@ -34,6 +34,10 @@ def create_folders(working):
     return created
 
 
+def get_src_folders(working):
+    print()
+
+
 def copy_files(folders):
     for i in folders:
         print(i)
