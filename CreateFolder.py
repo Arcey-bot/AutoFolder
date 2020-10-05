@@ -1,6 +1,6 @@
 import os
 import config
-from shutil import make_archive
+from shutil import make_archive, copyfile
 
 path = config.file_path
 
@@ -8,6 +8,8 @@ path = config.file_path
 def main():
     folders = create_folders(get_work_dir())
     populate_folders(folders)
+    if input("Copy files from examples? [y/n] ") == 'y':
+        print()
     if input("Zip files? [y/n]: ") == 'y':
         zip_folders(folders)
 
