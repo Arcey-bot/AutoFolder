@@ -6,7 +6,8 @@ path = config.file_path
 
 
 def main():
-    folders = create_folders(get_work_dir())
+    working = get_work_dir()
+    folders = create_folders(working)
     if input("Copy files from examples? [y/n] ") == 'y':
         copy_files(folders)
     else:
@@ -34,8 +35,13 @@ def create_folders(working):
     return created
 
 
-def get_src_folders(working):
-    print()
+def get_src_folders(working, assignments):
+    src_folders = []
+    working += '/' + working[len(working) - 1]
+    for i in range(1, assignments):
+        current = working + '.' + str(i)
+        src_folders.append(current)
+        print(current)
 
 
 def copy_files(folders):
