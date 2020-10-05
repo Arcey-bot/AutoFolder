@@ -9,7 +9,7 @@ def main():
     working = get_work_dir()
     folders = create_folders(working)
     if input("Copy files from examples? [y/n] ") == 'y':
-        copy_files(folders)
+        copy_files(folders, working)
     else:
         populate_folders(folders)
     if input("Zip files? [y/n]: ") == 'y':
@@ -44,7 +44,7 @@ def get_src_folders(working, assignments):
         print(current)
 
 
-def copy_files(folders):
+def copy_files(folders, working):
     for i in folders:
         print(i)
 
