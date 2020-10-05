@@ -1,6 +1,7 @@
 import os
 import config
-from shutil import make_archive, copyfile
+from shutil import make_archive
+from distutils.dir_util import copy_tree
 
 path = config.file_path
 
@@ -45,7 +46,9 @@ def get_src_folders(working, assignments):
 
 
 def copy_files(folders, working):
-    get_src_folders(working, len(folders))
+    sources = get_src_folders(working, len(folders))
+    for i in range(len(sources)):
+        copy_tree(sources[i], folders[i])
 
 
 def populate_folders(created):
