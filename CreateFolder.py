@@ -2,6 +2,7 @@ import os
 import config
 from shutil import make_archive
 from distutils.dir_util import copy_tree
+from bs4 import BeautifulSoup
 
 path = config.file_path
 
