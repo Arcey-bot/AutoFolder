@@ -87,7 +87,7 @@ def edit_html_text(html):
     if soup.find(config.CUSTOM_EDIT):
         foot = soup.footer
         foot.clear()
-        foot.insert(0, "Copyright © 2020 Vinny Quintero")
+        foot.insert(0, config.FOOTER_CUSTOM_TEXT)
 
 def get_word_count(s):
     # Return the number of words in a string denoted by spaces
