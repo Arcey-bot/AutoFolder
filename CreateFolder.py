@@ -76,6 +76,15 @@ def read_html(file_name):
         return f.read()
 
 
+def edit_html_text(html):
+    # Create a soup and sift through it
+    soup = BeautifulSoup(html, "html.parser")
+    for tags in soup.find_all():
+        for child in tags.descendants:
+
+
+
+
 def populate_folders(created):
     # If a HTML file isn't already in a folder, provide a default one
     for i in created:

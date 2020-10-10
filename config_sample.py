@@ -1,5 +1,6 @@
 """ ex_file_path = C:/User/Your_Name/Desktop/Class/ClassFiles"""
 file_path = YOUR_WORKING_DIRECTORY
+IGNORE_TAGS = ('head', 'nav', 'div', 'class')
 LOREM_IPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et " \
               "dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut " \
               "aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum " \
