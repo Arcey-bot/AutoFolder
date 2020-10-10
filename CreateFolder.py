@@ -12,7 +12,7 @@ def main():
     folders = create_folders(working)
     if input("Copy files from examples? [y/n] ") == 'y':
         copy_files(folders, working)
-        # There's only text to replace if we're using examples
+        There's only text to replace if we're using examples
         if input("Replace all placeholder text in files? [y/n] ") == 'y':
             replace_html(folders)
     else:
@@ -48,7 +48,7 @@ def get_src_folders(working, assignments):
     # copy contents for new folders
     src_folders = []
     working += '/' + working[len(working) - 1]
-    for i in range(1, assignments):
+    for i in range(1, assignments + 1):
         current = working + '.' + str(i)
         src_folders.append(current)
     return src_folders
@@ -65,10 +65,11 @@ def replace_html(folders):
     # Iterates through all copied files and replace text accordingly
     for folder in folders:
         # Find all HTML files in directory and read them
-        for file in os.scandir(".html"):
+        for file in os.scandir():
             if file.path.endswith(".html"):
-                html = read_html(folder)
+                html = read_html(file)
                 soup = edit_html_text(html)
+                overwrite_html(file, soup)
 
 
 def read_html(file_name):
@@ -96,6 +97,7 @@ def edit_html_text(html):
         foot.clear()
         foot.insert(0, config.FOOTER_CUSTOM_TEXT)
     return soup
+
 
 def get_word_count(s):
     # Return the number of words in a string denoted by spaces
