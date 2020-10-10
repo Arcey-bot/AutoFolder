@@ -68,12 +68,19 @@ def replace_html(folders):
         for file in os.scandir(".html"):
             if file.path.endswith(".html"):
                 html = read_html(folder)
+                soup = edit_html_text(html)
 
 
 def read_html(file_name):
     # Return the html from the file passed in
     with open(file_name, "r") as f:
         return f.read()
+
+
+def overwrite_html(file_name, soup):
+    with open(file_name, "w") as f:
+        f.write(soup.prettify())
+        f.close()
 
 
 def edit_html_text(html):
@@ -88,6 +95,7 @@ def edit_html_text(html):
         foot = soup.footer
         foot.clear()
         foot.insert(0, config.FOOTER_CUSTOM_TEXT)
+    return soup
 
 def get_word_count(s):
     # Return the number of words in a string denoted by spaces
