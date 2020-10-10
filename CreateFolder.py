@@ -81,7 +81,8 @@ def edit_html_text(html):
     soup = BeautifulSoup(html, "html.parser")
     for tags in soup.find_all():
         for child in tags.descendants:
-
+            if child.parent.name not in config.IGNORE_TAGS and child.string is not None:
+                child.string = "Lorem"
 
 
 
