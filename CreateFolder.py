@@ -14,7 +14,7 @@ def main():
         copy_files(folders, working)
         # There's only text to replace if we're using examples
         if input("Replace all placeholder text in files? [y/n] ") == 'y':
-            print()
+            replace_html(folders)
     else:
         populate_folders(folders)
     if input("Zip files? [y/n]: ") == 'y':
@@ -59,6 +59,15 @@ def copy_files(folders, working):
     sources = get_src_folders(working, len(folders))
     for i in range(len(sources)):
         copy_tree(sources[i], folders[i])
+
+
+def replace_html(folders):
+    # Iterates through all copied files and replace text accordingly
+    for folder in folders:
+        # Find all HTML files in directory and read them
+        for file in os.scandir(".html"):
+            if file.path.endswith(".html"):
+                html = read_html(folder)
 
 
 def read_html(file_name):
