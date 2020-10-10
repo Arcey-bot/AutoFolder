@@ -12,6 +12,9 @@ def main():
     folders = create_folders(working)
     if input("Copy files from examples? [y/n] ") == 'y':
         copy_files(folders, working)
+        # There's only text to replace if we're using examples
+        if input("Replace all placeholder text in files? [y/n] ") == 'y':
+            print()
     else:
         populate_folders(folders)
     if input("Zip files? [y/n]: ") == 'y':
@@ -56,6 +59,12 @@ def copy_files(folders, working):
     sources = get_src_folders(working, len(folders))
     for i in range(len(sources)):
         copy_tree(sources[i], folders[i])
+
+
+def read_html(file_name):
+    # Return the html from the file passed in
+    with open(file_name, "r") as f:
+        return f.read()
 
 
 def populate_folders(created):
