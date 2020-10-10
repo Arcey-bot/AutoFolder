@@ -12,7 +12,7 @@ def main():
     folders = create_folders(working)
     if input("Copy files from examples? [y/n] ") == 'y':
         copy_files(folders, working)
-        There's only text to replace if we're using examples
+        # There's only text to replace if we're using examples
         if input("Replace all placeholder text in files? [y/n] ") == 'y':
             replace_html(folders)
     else:
@@ -65,15 +65,25 @@ def replace_html(folders):
     # Iterates through all copied files and replace text accordingly
     for folder in folders:
         # Find all HTML files in directory and read them
-        for file in os.scandir():
-            if file.path.endswith(".html"):
-                html = read_html(file)
-                soup = edit_html_text(html)
-                overwrite_html(file, soup)
+        for subdir, dirs, files in os.walk(folder):
+            for filename in files:
+                filepath = subdir + os.sep + filename
+                if filepath.endswith(".html"):
+                    html = read_html(filepath)
+                    soup = edit_html_text(html)
+                    overwrite_html(filepath, soup)
+        # for file in os.scandir():
+        #     print(file)
+        #     if file.path.endswith(".html"):
+        #         html = read_html(file)
+        #         soup = edit_html_text(html)
+        #         overwrite_html(file, soup)
+        # print()
 
 
 def read_html(file_name):
     # Return the html from the file passed in
+    print("I'M READING")
     with open(file_name, "r") as f:
         return f.read()
 
