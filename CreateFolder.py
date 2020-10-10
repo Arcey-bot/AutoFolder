@@ -85,6 +85,15 @@ def edit_html_text(html):
                 child.string = "Lorem"
 
 
+def get_word_count(s):
+    # Return the number of words in a string denoted by spaces
+    return len(s.split(" "))
+
+
+def lorem(n):
+    # Return that same number of words from the LOREM_IPSUM placeholder text
+    return " ".join(config.LOREM_IPSUM.split(" ")[0:n])
+
 
 def populate_folders(created):
     # If a HTML file isn't already in a folder, provide a default one
