@@ -1,8 +1,8 @@
 import os
 import config
+from bs4 import BeautifulSoup
 from shutil import make_archive
 from distutils.dir_util import copy_tree
-from bs4 import BeautifulSoup
 
 path = config.file_path
 
@@ -67,18 +67,11 @@ def replace_html(folders):
         # Find all HTML files in directory and read them
         for subdir, dirs, files in os.walk(folder):
             for filename in files:
-                filepath = subdir + os.sep + filename
-                if filepath.endswith(".html"):
-                    html = read_html(filepath)
+                file_path = subdir + os.sep + filename
+                if file_path.endswith(".html"):
+                    html = read_html(file_path)
                     soup = edit_html_text(html)
-                    overwrite_html(filepath, soup)
-        # for file in os.scandir():
-        #     print(file)
-        #     if file.path.endswith(".html"):
-        #         html = read_html(file)
-        #         soup = edit_html_text(html)
-        #         overwrite_html(file, soup)
-        # print()
+                    overwrite_html(file_path, soup)
 
 
 def read_html(file_name):
@@ -120,6 +113,7 @@ def lorem(n):
     return " ".join(config.LOREM_IPSUM.split(" ")[0:n])
 
 
+# TODO: Replace current file open using with
 def populate_folders(created):
     # If a HTML file isn't already in a folder, provide a default one
     for i in created:
@@ -128,6 +122,7 @@ def populate_folders(created):
             write_html(f)
 
 
+# TODO: Rework template HTML to use BS4 rather than strings
 def write_html(f):
     # Default HTML
     f.write("<!DOCTYPE html>\n")
