@@ -99,8 +99,10 @@ def edit_html_text(html):
     soup = BeautifulSoup(html, "html.parser")
     for tags in soup.find_all():
         for child in tags.descendants:
-            if child.parent.name not in config.IGNORE_TAGS and child.string is not None:
-                child.string = lorem(get_word_count(child.string))
+            # This checks if nav tag and will prevent the text from changing if it is
+            if child.find_parent(config.SKIP_TAGS) is None:
+                if child.parent.name not in config.IGNORE_TAGS and child.string is not None:
+                    child.string = lorem(get_word_count(child.string))
 
     if soup.find(config.CUSTOM_EDIT):
         foot = soup.footer
