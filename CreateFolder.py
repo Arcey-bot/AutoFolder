@@ -82,8 +82,12 @@ def edit_html_text(html):
     for tags in soup.find_all():
         for child in tags.descendants:
             if child.parent.name not in config.IGNORE_TAGS and child.string is not None:
-                child.string = "Lorem"
+                child.string = lorem(get_word_count(child.string))
 
+    if soup.find(config.CUSTOM_EDIT):
+        foot = soup.footer
+        foot.clear()
+        foot.insert(0, "Copyright © 2020 Vinny Quintero")
 
 def get_word_count(s):
     # Return the number of words in a string denoted by spaces

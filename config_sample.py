@@ -2,6 +2,7 @@
 file_path = YOUR_WORKING_DIRECTORY
 """ ex: IGNORE_TAGS = ('nav', 'footer')     will ignore nav and footer tags"""
 IGNORE_TAGS = ( YOUR_TAGS_HERE )
+CUSTOM_EDIT = 'footer'
 LOREM_IPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et " \
               "dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut " \
               "aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum " \
