@@ -5,7 +5,6 @@ from distutils.dir_util import copy_tree
 from bs4 import BeautifulSoup
 
 path = config.file_path
-nav = False
 
 
 def main():
@@ -126,11 +125,10 @@ def populate_folders(created):
     for i in created:
         if not os.path.exists(i + "index.html"):
             f = open(i + "index.html", "w")
-            write_HTML(f)
+            write_html(f)
 
 
-# noinspection PyPep8Naming
-def write_HTML(f):
+def write_html(f):
     # Default HTML
     f.write("<!DOCTYPE html>\n")
     f.write('<html lang="en">')
