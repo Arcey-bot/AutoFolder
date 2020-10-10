@@ -5,6 +5,7 @@ from distutils.dir_util import copy_tree
 from bs4 import BeautifulSoup
 
 path = config.file_path
+nav = False
 
 
 def main():
@@ -83,7 +84,6 @@ def replace_html(folders):
 
 def read_html(file_name):
     # Return the html from the file passed in
-    print("I'M READING")
     with open(file_name, "r") as f:
         return f.read()
 

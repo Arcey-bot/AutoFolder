@@ -1,7 +1,13 @@
 """ ex_file_path = C:/User/Your_Name/Desktop/Class/ClassFiles"""
 file_path = YOUR_WORKING_DIRECTORY
-""" ex: IGNORE_TAGS = ('nav', 'footer')     will ignore nav and footer tags"""
+""" Will ignore footer and header tags  
+ex: IGNORE_TAGS = ('footer', 'header')
+When a footer or header is found, it will ignore their current line"""
 IGNORE_TAGS = ( YOUR_TAGS_HERE )
+""" Unlike ignore, will skip over ENTIRE tag and it's contents
+ ex: SKIP_TAGS = ('nav', 'h1')
+ When a nav or h1 is found, it skip over all text and leave it untouched"""
+SKIP_TAGS = ( YOUR_TAGS_HERE )
 CUSTOM_EDIT = (YOUR_TAG_HERE)
 LOREM_IPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et " \
               "dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut " \
