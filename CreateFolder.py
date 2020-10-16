@@ -82,7 +82,7 @@ def read_html(file_name):
 
 def overwrite_html(file_name, soup):
     with open(file_name, "w") as f:
-        f.write(soup.prettify())
+        f.write(soup.prettify(formatter='html5'))
         f.close()
 
 
