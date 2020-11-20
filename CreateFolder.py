@@ -34,7 +34,7 @@ def create_folders(working):
     # Create specified number of folders in previously defined
     # subfolder if it does not already exist.
     created = []
-    working += '/Practice ' + working[len(working) - 1]
+    working += '/Practice ' + get_digit_suffix(working)
     for i in range(1, int(input("How many assignments? ")) + 1):
         current = working + '.' + str(i)
         created.append(current + '/')
@@ -43,11 +43,25 @@ def create_folders(working):
     return created
 
 
+def get_digit_suffix(working):
+    # Search working for digit suffix in current directory
+    # Allows for more directories with 2-digit suffixes
+    # to be operated on
+    suffix = ""
+
+    for c in reversed(working):
+        if c.isdigit():
+            suffix += c
+        else:
+            break
+    return suffix[::-1]
+
+
 def get_src_folders(working, assignments):
     # Get the example folders inside working directory to get
     # copy contents for new folders
     src_folders = []
-    working += '/' + working[len(working) - 1]
+    working += '/' + get_digit_suffix(working)
     for i in range(1, assignments + 1):
         current = working + '.' + str(i)
         src_folders.append(current)
